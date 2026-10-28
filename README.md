@@ -2,6 +2,8 @@
 
 Generazione assistita di offerte tecniche per bandi di gara, con una pipeline di agenti Gemini visibile in tempo reale.
 
+![Grafo degli agenti a fine elaborazione: ciclo per sezione, controlli globali, correzioni ed escalation all'operatore](assets/pipeline.png)
+
 ```
 Document Parser ─┬─ Requirements Analyst ─┐
                  └─ History Retriever ────┴─ Template Splitter ─▶ [ per ogni criterio:
