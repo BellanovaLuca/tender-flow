@@ -4,14 +4,6 @@ Generazione assistita di offerte tecniche per bandi di gara, con una pipeline di
 
 ![Grafo degli agenti a fine elaborazione: ciclo per sezione, controlli globali, correzioni ed escalation all'operatore](assets/pipeline.png)
 
-```
-Document Parser ─┬─ Requirements Analyst ─┐
-                 └─ History Retriever ────┴─ Template Splitter ─▶ [ per ogni criterio:
-                                                                    Section Retriever → Bid Writer ⇄ Section Validator ]
-                                                                  ─▶ Offer Validator ─┬─ Score Simulator
-                                                                                      └─ Assembler (DOCX)
-```
-
 | Agente | Cosa fa | LLM |
 |---|---|---|
 | Document Parser | Estrae testo dai PDF/DOCX del bando e li indicizza | no |
