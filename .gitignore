@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+backend/data/
+node_modules/
+frontend/dist/
+.pytest_cache/
+*.tsbuildinfo
+
+# Documenti di gara e knowledge base aziendale: mai nel repository.
+docs/
+presentazione/
+*.pptx
+*.xlsx

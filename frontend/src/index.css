@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Token semantici: i componenti usano solo questi per i neutri, i valori cambiano col tema. */
+:root {
+  color-scheme: light;
+  --canvas: #f5f7fb;
+  --panel: #ffffff;
+  --inset: #f1f4f9;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --track: #e2e8f0;
+  --fg: #0f172a;
+  --fg-2: #334155;
+  --muted: #5b6b80;
+  --subtle: #7a889b;
+  --faint: #a3aebd;
+  --node-bg: #ffffff;
+  --node-bg-active: #eef2ff;
+  --node-border: #d5dce6;
+  --node-border-done: #86efac;
+  --edge: #b4c0cf;
+  --edge-context: #cbd5e1;
+  --edge-active: #6366f1;
+  --flow: #4338ca;
+  --flow-loop: #d97706;
+  --cluster-bg: #f8fafd;
+  --cluster-border: #cfd8e3;
+  --chip-planned: #94a3b8;
+  --shadow: 0 1px 2px rgb(15 23 42 / 0.05), 0 1px 8px rgb(15 23 42 / 0.04);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #070b16;
+  --panel: #0c1322;
+  --inset: #080d19;
+  --line: #1e293b;
+  --line-strong: #334155;
+  --track: #1e293b;
+  --fg: #f1f5f9;
+  --fg-2: #cbd5e1;
+  --muted: #94a3b8;
+  --subtle: #64748b;
+  --faint: #475569;
+  --node-bg: #0f1729;
+  --node-bg-active: #141d33;
+  --node-border: #273449;
+  --node-border-done: #166534;
+  --edge: #3b4a63;
+  --edge-context: #334155;
+  --edge-active: #818cf8;
+  --flow: #e0e7ff;
+  --flow-loop: #fde68a;
+  --cluster-bg: #0b1324;
+  --cluster-border: #1e293b;
+  --chip-planned: #334155;
+  --shadow: none;
+}
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", "JetBrains Mono", ui-monospace, monospace;
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-inset: var(--inset);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-track: var(--track);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-faint: var(--faint);
+  --shadow-panel: var(--shadow);
+}
+
+html,
+body {
+  background: var(--canvas);
+  color: var(--fg);
+}
+
+/* Particella che scorre lungo un arco attivo del grafo. */
+.tf-flow {
+  stroke-dasharray: 10 260;
+  animation: tf-flow 1.4s linear infinite;
+}
+@keyframes tf-flow {
+  to {
+    stroke-dashoffset: -270;
+  }
+}
+
+.tf-pulse {
+  animation: tf-pulse 1.6s ease-in-out infinite;
+}
+@keyframes tf-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.tf-spin {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: tf-spin 0.9s linear infinite;
+}
+@keyframes tf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tf-caret {
+  animation: tf-blink 1s steps(2) infinite;
+}
+@keyframes tf-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.tf-fade-in {
+  animation: tf-fade-in 0.35s ease-out;
+}
+@keyframes tf-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tf-flow,
+  .tf-pulse,
+  .tf-spin,
+  .tf-caret,
+  .tf-fade-in {
+    animation: none;
+  }
+}
